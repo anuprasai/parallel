@@ -9,10 +9,10 @@
 
 
 #define MAXN 2000;/* Max value of N */
-volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
+int N;
+volatile float A[N][N], B[N][N], C[N][N];
 int Numthreads;
 static double  
-int N;
 mysecond()
 {
 	struct timeval	tp;
@@ -35,19 +35,8 @@ int main() {
 	double start = 0.;
 	double end = 0.;
     int i,j,k;
-//DEFINE STATIC MATRIX FOR TESTING
-/*// 2 rows 1 column
-    const int a[2][2] = {
-    {1, 2},
-    {3, 4}
-    };
-// 1 rows 1 column
-    const int b[2][2] = {
-    {1, 10},
-    {2, 20}
-    };
-// 2 rows 1 column
-    int c[2][2];*/
+const int dim = N;
+
 srand(time(NULL));
 //int rand_num = rand() % 100;
 for (int i = 0; i < N; i++) { 
