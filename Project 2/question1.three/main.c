@@ -8,11 +8,11 @@
 #include <pthread.h>
 
 
-#define MAXN 3 /* Max value of N */
+#define MAXN 2000/* Max value of N */
 volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
-
-static double 
-
+int Numthreads;
+int N;
+static double  
 mysecond()
 {
 	struct timeval	tp;
@@ -26,6 +26,12 @@ mysecond()
 
 
 int main() {
+
+	 printf("enter the matrix size\n");
+	 scanf("%d", &N);
+
+	  printf("enter the number of threads\n");
+	 scanf("%d", &Numthreads);
 	double start = 0.;
 	double end = 0.;
     int i,j,k;
@@ -44,36 +50,37 @@ int main() {
     int c[2][2];*/
 srand(time(NULL));
 //int rand_num = rand() % 100;
-for (int i = 0; i < MAXN; i++) { 
-        for (int j = 0; j < MAXN; j++) { 
-            A[i][j] = rand() % 10; 
+for (int i = 0; i < N; i++) { 
+        for (int j = 0; j < N; j++) { 
+            A[i][j] = rand() % 100; 
 	          //printf("%f ",A[i][j]);
 
-            B[i][j] = rand() % 10; 
+            B[i][j] = rand() % 100; 
 					  //printf("%f ",B[i][j]);
 
         } 
     } 
-
+if (N < 8){
 printf("printing matrix A\n");
-for (int row=0; row<MAXN; row++)
+for (int row=0; row<N; row++)
 {
-    for(int columns=0; columns<MAXN; columns++)
+    for(int columns=0; columns<N; columns++)
         {
          printf("%f     ", A[row][columns]);
         }
     printf("\n");
  }
-
+}
 printf("printing matrix B\n");
-for (int row=0; row<MAXN; row++)
+if (N < 8){
+for (int row=0; row<N; row++)
 {
-    for(int columns=0; columns<MAXN; columns++)
+    for(int columns=0; columns<N; columns++)
         {
          printf("%f     ", B[row][columns]);
         }
     printf("\n");
- }
+ }}
 
 /*for (int i = 0; i < MAXN; i++) { 
         for (int j = 0; j < MAXN; j++)  
@@ -81,7 +88,7 @@ for (int row=0; row<MAXN; row++)
       
     } 
 */
-    const int dim = MAXN;
+    const int dim = N;
 // BEGINNING OF Parallel STRUCTURE
 	start = mysecond();
 
@@ -89,7 +96,7 @@ for (int row=0; row<MAXN; row++)
 #pragma omp for schedule(static)
     for (i = 0; i < dim; i++) {
 			 //printf("hello3\n");
-			 //#pragma omp parallel num_threads(9)
+			 //#pragma omp parallel num_threads(Numthreads)
 				//#pragma omp for schedule(static)
         for (j = 0; j < dim; j++) {
             C[i][j] = 0;
