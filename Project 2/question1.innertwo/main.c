@@ -8,10 +8,10 @@
 #include <pthread.h>
 
 
-#define MAXN 3 /* Max value of N */
+#define MAXN /* Max value of N */
 volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
-
-static double 
+int Numthreads;
+static double  
 
 mysecond()
 {
@@ -26,6 +26,12 @@ mysecond()
 
 
 int main() {
+
+	 printf("enter the matrix size\n");
+	 scanf("%d", &MAXN);
+
+	  printf("enter the number of threads\n");
+	 scanf("%d", &Numthreads);
 	double start = 0.;
 	double end = 0.;
     int i,j,k;
@@ -89,7 +95,7 @@ for (int row=0; row<MAXN; row++)
 //#pragma omp for schedule(static)
     for (i = 0; i < dim; i++) {
 			 //printf("hello3\n");
-			 #pragma omp parallel num_threads(9)
+			 #pragma omp parallel num_threads(Numthreads)
 				#pragma omp for schedule(static)
         for (j = 0; j < dim; j++) {
             C[i][j] = 0;
