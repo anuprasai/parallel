@@ -121,7 +121,8 @@ void initialize_inputs() {
 /* Print input matrices */
 void print_inputs() {
     int row, col;
-    
+      if (N < 10) {
+
     printf("\nA =\n\t");
     for (row = 0; row < N; row++) {
         for (col = 0; col < N; col++) {
@@ -132,18 +133,18 @@ void print_inputs() {
     for (col = 0; col < N; col++) {
         printf("%5.2f%s", B[col], (col < N-1) ? "; " : "]\n");
     }
-    
+			}
 }
 
 void print_X() {
     int row;
     
-    
+    if (x>8){
     printf("\nX = [");
     for (row = 0; row < N; row++) {
         printf("%5.2f%s", X[row], (row < N-1) ? "; " : "]\n");
     }
-    
+}
 }
 
 int main(int argc, char **argv) {
