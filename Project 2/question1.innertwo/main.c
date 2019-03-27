@@ -8,10 +8,10 @@
 #include <pthread.h>
 
 
-#define MAXN 2000;/* Max value of N */
-int N;
-volatile float A[N][N], B[N][N], C[N][N];
+#define MAXN 2000/* Max value of N */
+volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
 int Numthreads;
+int N;
 static double  
 mysecond()
 {
@@ -35,21 +35,32 @@ int main() {
 	double start = 0.;
 	double end = 0.;
     int i,j,k;
-const int dim = N;
-
+//DEFINE STATIC MATRIX FOR TESTING
+/*// 2 rows 1 column
+    const int a[2][2] = {
+    {1, 2},
+    {3, 4}
+    };
+// 1 rows 1 column
+    const int b[2][2] = {
+    {1, 10},
+    {2, 20}
+    };
+// 2 rows 1 column
+    int c[2][2];*/
 srand(time(NULL));
 //int rand_num = rand() % 100;
 for (int i = 0; i < N; i++) { 
         for (int j = 0; j < N; j++) { 
-            A[i][j] = rand() % 10; 
+            A[i][j] = rand() % 100; 
 	          //printf("%f ",A[i][j]);
 
-            B[i][j] = rand() % 10; 
+            B[i][j] = rand() % 100; 
 					  //printf("%f ",B[i][j]);
 
         } 
     } 
-
+if (N < 8){
 printf("printing matrix A\n");
 for (int row=0; row<N; row++)
 {
@@ -59,8 +70,9 @@ for (int row=0; row<N; row++)
         }
     printf("\n");
  }
-
+}
 printf("printing matrix B\n");
+if (N < 8){
 for (int row=0; row<N; row++)
 {
     for(int columns=0; columns<N; columns++)
@@ -68,7 +80,7 @@ for (int row=0; row<N; row++)
          printf("%f     ", B[row][columns]);
         }
     printf("\n");
- }
+ }}
 
 /*for (int i = 0; i < MAXN; i++) { 
         for (int j = 0; j < MAXN; j++)  
