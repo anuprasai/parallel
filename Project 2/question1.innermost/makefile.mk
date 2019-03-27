@@ -1,5 +1,5 @@
-gauss: gauss
-        gcc -lpthread -o gauss gauss -I
+gauss: main
+        gcc -fopenmp gauss.c -o gauss -I
 
 
 clean:
