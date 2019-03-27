@@ -146,10 +146,10 @@ void print_X() {
 }
 
 void main(int argc, char **argv) {
-    printf("enter the matrix size\n");
+    printf("\nenter the matrix size\n");
 	 scanf("%d", &N);
 
-	  printf("enter the number of threads\n");
+	  printf("\nenter the number of threads\n");
 	 scanf("%d", &Numthreads);
     /* Timing variables */
     struct timeval etstart, etstop;  /* Elapsed times using gettimeofday() */
@@ -222,7 +222,7 @@ void main(int argc, char **argv) {
     /*printf("               (%g ms according to times())\n",
      *       (etstop2 - etstart2) / (float)CLK_TCK * 1000);
      */
-    printf("(CPU times are accurate to the nearest %g ms)\n",
+   /* printf("(CPU times are accurate to the nearest %g ms)\n",
            1.0/(float)CLK_TCK * 1000.0);
     printf("My total CPU time for parent = %g ms.\n",
            (float)( (cputstop.tms_utime + cputstop.tms_stime) -
