@@ -1,10 +1,36 @@
 #include <omp.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <unistd.h>
+#include <sys/time.h>
+#include <limits.h>
+#include <pthread.h>
+
+
+#define MAXN 3 /* Max value of N */
+volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
+
+static double 
+
+mysecond()
+{
+	struct timeval	tp;
+	struct timezone	tzp;
+	int i = 0;
+
+	i = gettimeofday(&tp, &tzp);
+	return ((double)tp.tv_sec + (double)tp.tv_usec * 1.e-6);
+}
+
+
 
 int main() {
+	double start = 0.;
+	double end = 0.;
     int i,j,k;
 //DEFINE STATIC MATRIX FOR TESTING
-// 2 rows 1 column
+/*// 2 rows 1 column
     const int a[2][2] = {
     {1, 2},
     {3, 4}
@@ -15,29 +41,78 @@ int main() {
     {2, 20}
     };
 // 2 rows 1 column
-    int c[2][2];
-    const int dim = 2;
+    int c[2][2];*/
+srand(time(NULL));
+//int rand_num = rand() % 100;
+for (int i = 0; i < MAXN; i++) { 
+        for (int j = 0; j < MAXN; j++) { 
+            A[i][j] = rand() % 10; 
+	          //printf("%f ",A[i][j]);
+
+            B[i][j] = rand() % 10; 
+					  //printf("%f ",B[i][j]);
+
+        } 
+    } 
+
+printf("printing matrix A\n");
+for (int row=0; row<MAXN; row++)
+{
+    for(int columns=0; columns<MAXN; columns++)
+        {
+         printf("%f     ", A[row][columns]);
+        }
+    printf("\n");
+ }
+
+printf("printing matrix B\n");
+for (int row=0; row<MAXN; row++)
+{
+    for(int columns=0; columns<MAXN; columns++)
+        {
+         printf("%f     ", B[row][columns]);
+        }
+    printf("\n");
+ }
+
+/*for (int i = 0; i < MAXN; i++) { 
+        for (int j = 0; j < MAXN; j++)  
+            printf("%5.2f%s", A[i][j], ", " ";\n\t");
+      
+    } 
+*/
+    const int dim = MAXN;
 // BEGINNING OF Parallel STRUCTURE
-#pragma omp parallel num_threads(2)
-#pragma omp for schedule(static)
+	start = mysecond();
+
+//#pragma omp parallel num_threads(9)
+//#pragma omp for schedule(static)
     for (i = 0; i < dim; i++) {
 			 //printf("hello3\n");
+			 #pragma omp parallel num_threads(9)
+				#pragma omp for schedule(static)
         for (j = 0; j < dim; j++) {
-            c[i][j] = 0;
+            C[i][j] = 0;
 						//printf("hello2\n");
+						//#pragma omp parallel num_threads(9)
 						//#pragma omp for schedule(static)
             for (k = 0; k < dim; k++) {
-                c[i][j] += a[i][k] * b[k][j];
+                C[i][j] += A[i][k] * B[k][j];
 							//	printf("hello1\n");
             }
         }
-    }
-	 #pragma omp barrier
 
+    }
+	 //#pragma omp barrier
+			end = mysecond();
+
+  	printf("printing matrix C\n");
     for(i = 0; i< dim; i++){
         for(j = 0; j < dim; j++) {
-            printf("%d ",c[i][j]);
+            printf("%f ",C[i][j]);
         }
         printf("\n");
     }
+			printf("Runtime of threads = %f seconds\n", (end - start));
+
 }
