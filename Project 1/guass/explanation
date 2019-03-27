@@ -1,0 +1,117 @@
+The gaussian elimination was one of the hardest project I had to do. This project took me almost two weeks to complete. First I had to gain a better understanding about pthreads and learn more about gaussian elimination. I took linear algebra my sophomore year in college. One of challenges I faced during the project was that I did not have a linux based computer. The first week I was determined to finish my project with my windows computer with Replt, an online based linux computer. But that didn't work so I had use the library Mac computers to finish the rest of my project. Once I started using the library computers, the project seemed a lot easier. It took an extra day to turn in my project because my gaussian algorithm would not work. I had to scrap all of my code and completely redo it. I used the professors's code and added the create and join pthreads and added some other Code for my project. I liked learning about the pthreads and how to use them. This was a stressful but very educative project. IF you want to manipulate the processors, 
+Pthreads and matrix dimension change it in the code 
+Here are my results for the gaussian algorithm are: 
+ 
+Matrix dimension N = 4.
+Number of processors = 2.
+Number of pthreads = 10.
+
+Initializing...
+
+A =
+	16660.47, 48477.52, 9291.14, 51287.96;
+	42807.45, 18170.43, 49443.43, 1733.41;
+	10683.17, 58226.88, 64750.42, 35492.31;
+	48854.48, 35638.65, 35060.45, 10640.37;
+	
+B = [62329.74; 45279.55; 26756.34; 50414.17]
+
+Starting clock.
+Stopped clock.
+
+X = [ 1.24; -0.87;  0.11;  1.62]
+
+Elapsed time = 0.071 ms.
+(CPU times are accurate to the nearest 10 ms)
+My total CPU time for parent = 0 ms.
+My system CPU time for parent = 0 ms.
+My total CPU time for child processes = 0 ms.
+--------------------------------------------
+
+Matrix dimension N = 4.
+Number of processors = 2.
+Number of pthreads = 8.
+
+Initializing...
+
+A =
+	15977.45, 61724.60, 58661.94, 29905.95;
+	32063.31, 36066.75, 7577.45, 33748.86;
+	51056.30, 31308.64, 17814.94, 3073.13;
+	40427.33, 15837.70, 47210.29, 7656.21;
+	
+B = [50375.19; 42545.16; 19030.50; 30734.41]
+
+Starting clock.
+Stopped clock.
+
+X = [ 0.22; -0.02;  0.31;  1.01]
+
+Elapsed time = 0.068 ms.
+(CPU times are accurate to the nearest 10 ms)
+My total CPU time for parent = 0 ms.
+My system CPU time for parent = 0 ms.
+My total CPU time for child processes = 0 ms.
+--------------------------------------------
+
+Matrix dimension N = 4.
+Number of processors = 2.
+Number of pthreads = 2.
+
+Initializing...
+
+A =
+	15892.31, 38968.87, 15320.04, 34478.26;
+	42858.87, 48557.49, 58491.21, 6826.82;
+	22844.14, 51523.68, 21730.88, 50396.74;
+	31519.55, 31356.40, 64317.13, 30790.55;
+	
+B = [21581.20; 32123.57; 27246.65; 24455.31]
+
+Starting clock.
+Stopped clock.
+
+X = [-0.63;  0.79;  0.37; -0.14]
+
+Elapsed time = 0.028 ms.
+
+Matrix dimension N = 4.
+Number of processors = 2.
+Number of pthreads = 1.
+
+Initializing...
+
+A =
+	15026.86, 23245.61, 45066.14, 45054.45;
+	46224.81, 28846.07, 27086.15, 27240.79;
+	36704.16, 46160.18, 23814.84, 1497.28;
+	61917.77, 64536.58, 27709.14, 64455.41;
+	
+B = [5729.50; 45484.44; 8713.78; 57457.55]
+
+Starting clock.
+Stopped clock.
+
+X = [ 1.43; -0.75; -0.41;  0.45]
+Elapsed time = 0.024 ms.
+
+Matrix dimension N = 4.
+Number of processors = 2.
+Number of pthreads = 4.
+
+Initializing...
+
+A =
+	56421.09, 34599.54, 28427.27, 34365.93;
+	28857.54, 13608.90, 19642.30, 19461.25;
+	42363.88, 4115.12, 23384.06, 60641.22;
+	26672.71, 22337.69, 62080.05, 46632.11;
+	
+B = [21990.37; 39295.21; 46380.65; 834.01]
+
+Starting clock.
+Stopped clock.
+
+X = [ 4.26; -5.42;  2.14; -2.67]
+
+Elapsed time = 0.053 ms.

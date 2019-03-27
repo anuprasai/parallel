@@ -1,0 +1,11 @@
+Minimum value found: 1873
+Runtime of 1 threads = 0.002390 seconds
+
+Minimum value found: 173
+Runtime of 2 threads = 0.002141 seconds
+
+Minimum value found: 1
+Runtime of 4 threads = 0.002039 seconds
+
+Minimum value found: 1
+Runtime of 8 threads = 0.001442 seconds

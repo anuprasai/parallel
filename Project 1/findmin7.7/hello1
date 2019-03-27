@@ -1,0 +1,24 @@
+Default number of threads = 8
+Default number of elements = 1000000
+Default seed value = 10
+Minimum value found: 0
+Runtime of 8 threads = 0.001559 seconds
+
+Default number of threads = 4
+Default number of elements = 1000000
+Default seed value = 10
+Minimum value found: 0
+Runtime of 10 threads =  0.001200 seconds
+
+Default number of threads = 2
+Default number of elements = 1000000
+Default seed value = 10
+Minimum value found: 0
+Runtime of 2 threads = 0.001878 seconds
+
+
+Default number of threads = 1
+Default number of elements = 1000000
+Default seed value = 10
+Minimum value found: 0
+Runtime of 1 threads = 0.002607 seconds
