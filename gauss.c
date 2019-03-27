@@ -139,7 +139,7 @@ void print_inputs() {
 void print_X() {
     int row;
     
-    if (x>8){
+     if (N < 10){
     printf("\nX = [");
     for (row = 0; row < N; row++) {
         printf("%5.2f%s", X[row], (row < N-1) ? "; " : "]\n");
