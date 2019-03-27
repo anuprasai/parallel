@@ -1,6 +1,5 @@
 gauss: main
-        gcc -fopenmp gauss.c -o gauss -I
-
+ 	gcc -fopenmp main.c -o main -I
 
 clean:
 	rm -f *.exe 
