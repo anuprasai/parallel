@@ -112,6 +112,7 @@ for (int row=0; row<N; row++)
     }
 	 //#pragma omp barrier
 			end = mysecond();
+	printf("Runtime of threads = %f seconds\n", (end - start));
 if (N < 8){
 
   	printf("printing matrix C\n");
@@ -121,7 +122,7 @@ if (N < 8){
         }
         printf("\n");
     }
-			printf("Runtime of threads = %f seconds\n", (end - start));
+			
 }
 
 }
