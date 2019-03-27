@@ -259,8 +259,8 @@ void gauss() {
 		//	omp_set_nested(1);
 
     for (norm = 0; norm < N - 1; norm++) {
-			#pragma omp parallel default(none) get_num_threads(Numthreads) shared(N,A,B, multiplier) private(norm,row,col)
-		 #pragma omp for schedule(static)
+			#pragma omp parallel num_threads(Numthreads)
+			#pragma omp for schedule(static)
 			
         for (row = norm + 1; row < N; row++) {
             multiplier = A[row][norm] / A[norm][norm];
