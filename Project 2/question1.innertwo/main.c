@@ -8,11 +8,11 @@
 #include <pthread.h>
 
 
-#define MAXN /* Max value of N */
+#define MAXN 2000;/* Max value of N */
 volatile float A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN];
 int Numthreads;
 static double  
-
+int N;
 mysecond()
 {
 	struct timeval	tp;
@@ -28,7 +28,7 @@ mysecond()
 int main() {
 
 	 printf("enter the matrix size\n");
-	 scanf("%d", &MAXN);
+	 scanf("%d", &N);
 
 	  printf("enter the number of threads\n");
 	 scanf("%d", &Numthreads);
@@ -50,8 +50,8 @@ int main() {
     int c[2][2];*/
 srand(time(NULL));
 //int rand_num = rand() % 100;
-for (int i = 0; i < MAXN; i++) { 
-        for (int j = 0; j < MAXN; j++) { 
+for (int i = 0; i < N; i++) { 
+        for (int j = 0; j < N; j++) { 
             A[i][j] = rand() % 10; 
 	          //printf("%f ",A[i][j]);
 
@@ -62,9 +62,9 @@ for (int i = 0; i < MAXN; i++) {
     } 
 
 printf("printing matrix A\n");
-for (int row=0; row<MAXN; row++)
+for (int row=0; row<N; row++)
 {
-    for(int columns=0; columns<MAXN; columns++)
+    for(int columns=0; columns<N; columns++)
         {
          printf("%f     ", A[row][columns]);
         }
@@ -72,9 +72,9 @@ for (int row=0; row<MAXN; row++)
  }
 
 printf("printing matrix B\n");
-for (int row=0; row<MAXN; row++)
+for (int row=0; row<N; row++)
 {
-    for(int columns=0; columns<MAXN; columns++)
+    for(int columns=0; columns<N; columns++)
         {
          printf("%f     ", B[row][columns]);
         }
@@ -87,7 +87,7 @@ for (int row=0; row<MAXN; row++)
       
     } 
 */
-    const int dim = MAXN;
+    const int dim = N;
 // BEGINNING OF Parallel STRUCTURE
 	start = mysecond();
 
