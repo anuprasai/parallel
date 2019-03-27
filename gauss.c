@@ -16,9 +16,9 @@
 
 //CHANGE THE VALUE BELOW TO CHANGE THE OUTPUT
 
-int N = 12;  /* Matrix size */
+int N; /* Matrix size */
 int procs = 3;  /* Number of processors to use */
-int Numthreads = 5; /* number of threads*/
+int Numthreads; /* number of threads*/
 
 
 /* Matrices and vectors */
@@ -55,7 +55,7 @@ void parameters(int argc, char **argv) {
     /*   if ( argc == 2 && !strcmp(argv[1], "submit") ) {
       Use submission parameters */
     submit = 1;
-    N = 4;
+   // N = 4;
     procs = 2;
     // printf("\nSubmission run for \"%s\".\n", cuserid(uid));
     // srand(randm());
@@ -147,6 +147,12 @@ void print_X() {
 }
 
 int main(int argc, char **argv) {
+	 printf("enter the matrix size\n");
+	 scanf("%d", &N);
+
+	  printf("enter the number of threads\n");
+	 scanf("%d", &Numthreads);
+
     /* Timing variables */
     struct timeval etstart, etstop;  /* Elapsed times using gettimeofday() */
     struct timezone tzdummy;
