@@ -63,13 +63,12 @@ unsigned int time_seed() {
 }
 
 
-/* Set the program parameters from the command-line arguments */
+/* Set the program parameters from the command-line arguments 
 void parameters(int argc, char **argv) {
   int seed = 0;  /* Random seed */
-  char uid[32]; /*User name */
+ /* char uid[32]; /*User name 
 
-  /* Read command-line arguments */
-  srand(time_seed());  /* Randomize */
+  srand(time_seed());  /* Randomize
 
   if (argc == 3) {
     seed = atoi(argv[2]);
@@ -89,10 +88,10 @@ void parameters(int argc, char **argv) {
     exit(0);
   }
 
-  /* Print parameters */
+
   if ( my_rank == SOURCE )  printf("\nMatrix dimension N = %i.\n", N);
 }
-
+*/
 
 /* Allocates memory for A, B and X */
 void allocate_memory() {
