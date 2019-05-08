@@ -224,11 +224,9 @@ void gauss() {
 					mult = A[row][norm] / A[norm][norm];
 				}
 			}
-			MPI_Bcast(&mult, N, MPI_FLOAT, (rank + 1), 0, MPI_COMM_WORLD);
+			MPI_Bcast(&mult, N, MPI_FLOAT, 0, MPI_COMM_WORLD);
 		}
 		else if (rank % 2 != 0) {
-			MPI_Recv(&mult, N, MPI_FLOAT, (rank - 1), 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
 			for (row = norm + 1; row < N; row++) {
 				if (map[row] == rank) {
 					for (col = 0; col < N; col++) {
