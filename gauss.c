@@ -98,8 +98,8 @@ void parameters(int argc, char **argv) {
     
     /* Print parameters */
     printf("\nMatrix dimension N = %i.\n", N);
-    printf("Number of processors = %i.\n", procs);
-    printf("Number of pthreads = %i.\n", Numthreads);
+    printf("Number of processors = %i.\n", world_size);
+    //printf("Number of pthreads = %i.\n", Numthreads);
 
     
     /* Set number of processors */
@@ -206,7 +206,7 @@ int main(int argc, char **argv) {
         }
     }*/
     
-    
+      int ping_pong_count = 0;
       int partner_rank = (world_rank + 1) % 2;
     
        if (world_rank == ping_pong_count % 2) {
