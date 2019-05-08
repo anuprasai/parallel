@@ -46,7 +46,7 @@ int N = 3; /* Matrix size */;
 /* My process rank           */
 int my_rank;
 /* The number of processes   */
-int p =3; 
+int p = 32; 
 
 /* Matrixes given by a pointer */
 float *A, *B, *X;
