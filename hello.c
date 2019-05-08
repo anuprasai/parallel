@@ -38,13 +38,13 @@ Go to the function gaussElimination() for more details
 #include <mpi.h>
 
 #define MAXN 8000 /* Max value of N */
-int N = 3; /* Matrix size */
+int N = 3; /* Matrix size */;
 #define DIVFACTOR 32768.0f
 
 #define SOURCE 0
 
 /* My process rank           */
-int my_rank 
+int my_rank;
 /* The number of processes   */
 int p =3; 
 
