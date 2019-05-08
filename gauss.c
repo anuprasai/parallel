@@ -7,6 +7,8 @@
 #include <limits.h>
 #include <pthread.h>
 #include <omp.h>
+#include <mpi.h>
+
 
 //#include <ulocks.h>
 //#include <task.h>
@@ -17,7 +19,8 @@
 //CHANGE THE VALUE BELOW TO CHANGE THE OUTPUT
 
 int N; /* Matrix size */
-int procs = 3;  /* Number of processors to use */
+int world_rank /* the rank of the processor*/
+int world_size;  /* Number of processors to use */
 int Numthreads; /* number of threads*/
 
 
@@ -56,7 +59,7 @@ void parameters(int argc, char **argv) {
       Use submission parameters */
     submit = 1;
    // N = 4;
-    procs = 2;
+  //  procs = 2;
     // printf("\nSubmission run for \"%s\".\n", cuserid(uid));
     // srand(randm());
     /*  }
@@ -152,7 +155,7 @@ int main(int argc, char **argv) {
 	 scanf("%d", &N);
 
 	  printf("enter the number of threads\n");
-	 scanf("%d", &Numthreads);
+	 scanf("%d", &world_size);
 
     /* Timing variables */
     struct timeval etstart, etstop;  /* Elapsed times using gettimeofday() */
@@ -164,6 +167,14 @@ int main(int argc, char **argv) {
     
     /* Process program parameters */
     parameters(argc, argv);
+    MPI_Init(NULL, NULL );
+    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+ if (world_size != 2) {
+    fprintf(stderr, "World size must be two for %s\n", argv[0]);
+    MPI_Abort(MPI_COMM_WORLD, 1);
+  }
     
     /* Initialize A and B */
     initialize_inputs();
@@ -176,11 +187,12 @@ int main(int argc, char **argv) {
     gettimeofday(&etstart, &tzdummy);
     etstart2 = times(&cputstart);
     
-    int *index = calloc (Numthreads, sizeof (int));
-    for(int i = 0; i < Numthreads; i++)
+    int *index = calloc (world_size, sizeof (int));
+    for(int i = 0; i < world_size; i++)
     {
         index[i] = i;
     }
+
     
    /* for (int j=0; j < N-1; j++){
         
@@ -195,9 +207,21 @@ int main(int argc, char **argv) {
     }*/
     
     
+      int partner_rank = (world_rank + 1) % 2;
     
-    
-    
+       if (world_rank == ping_pong_count % 2) {
+      // Increment the ping pong count before you send it
+      ping_pong_count++;
+      MPI_Send(&ping_pong_count, 1, MPI_INT, partner_rank, 0, MPI_COMM_WORLD);
+      printf("%d sent and incremented ping_pong_count %d to %d\n",
+             world_rank, ping_pong_count, partner_rank);
+    } else {
+      MPI_Recv(&ping_pong_count, 1, MPI_INT, partner_rank, 0, MPI_COMM_WORLD,
+               MPI_STATUS_IGNORE);
+      printf("%d received ping_pong_count %d from %d\n",
+             world_rank, ping_pong_count, partner_rank);
+    }
+  }
     
     
     
@@ -260,9 +284,6 @@ void gauss() {
 		//	omp_set_nested(1);
 
     for (norm = 0; norm < N - 1; norm++) {
-			#pragma omp parallel num_threads(Numthreads)
-			#pragma omp for schedule(static)
-			
         for (row = norm + 1; row < N; row++) {
             multiplier = A[row][norm] / A[norm][norm];
             for (col = norm; col < N; col++) {
