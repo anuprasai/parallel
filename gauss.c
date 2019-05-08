@@ -221,7 +221,7 @@ int main(int argc, char **argv) {
       printf("%d received ping_pong_count %d from %d\n",
              world_rank, ping_pong_count, partner_rank);
     }
-  }
+  
     
     
     
