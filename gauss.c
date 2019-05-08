@@ -19,7 +19,7 @@
 //CHANGE THE VALUE BELOW TO CHANGE THE OUTPUT
 
 int N; /* Matrix size */
-int world_rank /* the rank of the processor*/
+int world_rank; /* the rank of the processor*/
 int world_size;  /* Number of processors to use */
 int Numthreads; /* number of threads*/
 
