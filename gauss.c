@@ -151,6 +151,10 @@ void print_X() {
 }
 
 int main(int argc, char **argv) {
+    parameters(argc, argv);
+    MPI_Init(NULL, NULL );
+        MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 	 printf("enter the matrix size\n");
 	 scanf("%d", &N);
 
@@ -167,9 +171,7 @@ int main(int argc, char **argv) {
     
     /* Process program parameters */
     parameters(argc, argv);
-    MPI_Init(NULL, NULL );
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
 
  if (world_size != 2) {
     fprintf(stderr, "World size must be two for %s\n", argv[0]);
