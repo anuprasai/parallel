@@ -267,7 +267,7 @@ void gaussElimination() {
         MPI_Send( &A[ N*norm ], N, MPI_FLOAT, SOURCE, MPI_COMM_WORLD );
         MPI_Send( &B[norm], 1, MPI_FLOAT, SOURCE, MPI_COMM_WORLD );
 		 }
-		 else{
+		 else{ my_rank ==1){
 	 MPI_Recv( &A[ N*norm ], N, MPI_FLOAT, SOURCE, MPI_COMM_WORLD );
 		 MPI_Recv( &B[norm], 1, MPI_FLOAT, SOURCE, MPI_COMM_WORLD );}
         /* ---------------------------------------   */
@@ -326,7 +326,7 @@ void gaussElimination() {
             }
         }*/
 
-      /*MPI_Scatterv(
+      MPI_Scatterv(
             &A[0],              // send buffer
             n_of_rows_A_array,  // array with number of elements in each chunk
             first_row_A_array,  // array with pointers to initial element of each chunk
@@ -347,7 +347,7 @@ void gaussElimination() {
             MPI_FLOAT,
             SOURCE,
             MPI_COMM_WORLD
-        );   */
+        );   
 
         
         /*printf("\nProcess %d: Iteration number %d of %d\n",
