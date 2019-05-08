@@ -161,6 +161,9 @@ int main(int argc, char **argv) {
 	  printf("enter the number of threads\n");
 	 scanf("%d", &world_size);
 
+       const int PING_PONG_LIMIT = 10;
+
+
     /* Timing variables */
     struct timeval etstart, etstop;  /* Elapsed times using gettimeofday() */
     struct timezone tzdummy;
@@ -211,7 +214,8 @@ int main(int argc, char **argv) {
       int ping_pong_count = 0;
       int partner_rank = (world_rank + 1) % 2;
     
-       if (world_rank == ping_pong_count % 2) {
+   while (ping_pong_count < PING_PONG_LIMIT) {
+    if (world_rank == ping_pong_count % 2) {
       // Increment the ping pong count before you send it
       ping_pong_count++;
       MPI_Send(&ping_pong_count, 1, MPI_INT, partner_rank, 0, MPI_COMM_WORLD);
@@ -223,7 +227,8 @@ int main(int argc, char **argv) {
       printf("%d received ping_pong_count %d from %d\n",
              world_rank, ping_pong_count, partner_rank);
     }
-  
+  }
+  MPI_Finalize();
     
     
     
