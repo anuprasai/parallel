@@ -38,15 +38,15 @@ Go to the function gaussElimination() for more details
 #include <mpi.h>
 
 #define MAXN 8000 /* Max value of N */
-int N; /* Matrix size */
+int N = 3; /* Matrix size */
 #define DIVFACTOR 32768.0f
 
 #define SOURCE 0
 
 /* My process rank           */
-int my_rank;
+int my_rank 
 /* The number of processes   */
-int p; 
+int p =3; 
 
 /* Matrixes given by a pointer */
 float *A, *B, *X;
@@ -194,7 +194,7 @@ int main(int argc, char **argv) {
             my_rank+1, p);
 
     /* Every process reads the parameters to prepare dimension */
-    parameters(argc, argv);
+    //parameters(argc, argv);
 
     /* Every process must allocate memory for the arrays */
     allocate_memory();
