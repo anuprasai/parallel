@@ -161,7 +161,7 @@ int main(int argc, char **argv) {
     /* Find out how many processes are being used */
     MPI_Comm_size(MPI_COMM_WORLD, &p);
 
-   =
+   
 
     /* Every process reads the parameters to prepare dimension */
     
