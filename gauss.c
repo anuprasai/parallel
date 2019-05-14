@@ -164,6 +164,8 @@ void main(int argc, char **argv) {
 
 
 	etstop = MPI_Wtime();
+	MPI_Finalize();
+
 
 	/* Stop Clock */
 //	gettimeofday(&etstop, &tzdummy);
@@ -197,7 +199,6 @@ void main(int argc, char **argv) {
 				 (float)CLOCKS_PER_SEC * 1000);
 		 /* Contrary to the man pages, this appears not to include the parent */
 	printf("--------------------------------------------\n");
-	MPI_Finalize();
 	
 
 }
