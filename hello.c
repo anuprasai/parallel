@@ -11,7 +11,7 @@
 #include <mpi.h>
 
 #define MAXN 8000 /* Max value of N */
-int N; /* Matrix size */
+int N = 2000; /* Matrix size */
 #define DIVFACTOR 32768.0f
 
 #define SOURCE 0
@@ -161,8 +161,7 @@ int main(int argc, char **argv) {
     /* Find out how many processes are being used */
     MPI_Comm_size(MPI_COMM_WORLD, &p);
 
-    printf("\nProcess number %d of %d says hi\n",
-            my_rank+1, p);
+   =
 
     /* Every process reads the parameters to prepare dimension */
     
