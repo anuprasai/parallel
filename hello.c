@@ -165,8 +165,7 @@ int main(int argc, char **argv) {
             my_rank+1, p);
 
     /* Every process reads the parameters to prepare dimension */
-    parameters(argc, argv);
-
+    
     /* Every process must allocate memory for the arrays */
     allocate_memory();
 
