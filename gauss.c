@@ -10,7 +10,7 @@
 #include "mpi.h"
 
 /* Program Parameters */
-#define MAXN 8000  /* Max value of N */
+#define MAXN 2000  /* Max value of N */
 int N;  /* Matrix size */
 int procs, rank;  /* Number of processors to use */
 
@@ -162,10 +162,9 @@ void main(int argc, char **argv) {
 	/* Gaussian Elimination */
 	gauss();
 
-
-	etstop = MPI_Wtime();
 	MPI_Finalize();
 
+	etstop = MPI_Wtime();
 
 	/* Stop Clock */
 //	gettimeofday(&etstop, &tzdummy);
@@ -199,7 +198,6 @@ void main(int argc, char **argv) {
 				 (float)CLOCKS_PER_SEC * 1000);
 		 /* Contrary to the man pages, this appears not to include the parent */
 	printf("--------------------------------------------\n");
-	
 
 }
 
